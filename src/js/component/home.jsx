@@ -1,25 +1,29 @@
-import React from "react";
-
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, {useState} from "react";
 
 //create your first component
-const Home = () => {
+const Home = ({seconds}) => {
+	let ones = Math.floor(seconds % 10);
+	let tens = Math.floor(seconds / 10) % 10;
+	let hundreds = Math.floor(seconds / 100) % 10;
+	let thousands = Math.floor(seconds / 1000) % 10;
+	let tensOfAThousand = Math.floor(seconds / 10000) % 10;
+	let hundredsOfAThousand = Math.floor(seconds / 100000) % 10;
+	
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<>
+		<div>
+			<h1 style={{color: "white"}}>Seconds counter:</h1>
 		</div>
+		<div id="simpleCounter" className="d-flex">
+			<div className="digit">🕜</div>
+			<div className="digit">{hundredsOfAThousand}</div>
+			<div className="digit">{tensOfAThousand}</div>
+			<div className="digit">{thousands}</div>
+			<div className="digit">{hundreds}</div>
+			<div className="digit">{tens}</div>
+			<div className="digit">{ones}</div>
+		</div>
+		</>
 	);
 };
 
